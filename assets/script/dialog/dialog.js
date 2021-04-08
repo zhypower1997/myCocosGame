@@ -5,23 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-let goblinDialogs = [{
-        role: 1,
-        content: '我好饿啊'
-    },
-    {
-        role: 2,
-        content: '你要吃啥'
-    },
-    {
-        role: 1,
-        content: '不知道'
-    }
-];
-let roleInfo = {
-    1: ['哥布林', 'picAvatar/goblin'], // 哥布林
-    2: ['小男孩', 'picAvatar/littleBoy'] // 小男孩
-}
+import {
+    goblinDialogs,
+    roleInfo
+} from '../dataConfig';
 
 cc.Class({
     extends: cc.Component,

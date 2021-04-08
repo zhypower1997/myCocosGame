@@ -118,14 +118,18 @@ cc.Class({
 
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact: function (contact, selfCollider, otherCollider) {
-        if(this.walkStatus){
-            this.walk();
+        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 2) {
+            if (this.walkStatus) {
+                this.walk();
+            }
         }
     },
 
     // 只在两个碰撞体结束接触时被调用一次
     onEndContact: function (contact, selfCollider, otherCollider) {
-        this.idle();
+        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 2) {
+            this.idle();
+        }
     },
     update(dt) {
         if (this.isGameOver) {
@@ -136,12 +140,12 @@ cc.Class({
 
         // 跳跃按钮事件
         if (this.Jump.jumpTime >= 0) {
-            if(this.Jump.isJump){
+            if (this.Jump.isJump) {
                 if (!this.jumpPressed) {
                     this.jump = true;
                 }
                 this.jumpPressed = true;
-            }else{
+            } else {
                 this.jumpPressed = false;
             }
         }

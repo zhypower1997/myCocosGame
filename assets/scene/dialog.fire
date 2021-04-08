@@ -279,8 +279,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 410.36,
+      "height": 806.78
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -298,8 +298,8 @@
         0,
         0,
         1,
-        0.2,
-        0.2,
+        1,
+        1,
         0.2
       ]
     },
@@ -330,7 +330,7 @@
       }
     ],
     "paused": false,
-    "defaultSkin": "default",
+    "defaultSkin": "full-skins/girl-blue-cape",
     "defaultAnimation": "",
     "_preCacheMode": 0,
     "_cacheMode": 0,
@@ -348,7 +348,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "9797768b-685a-42f2-8a33-faf0bcf69cf1"
+      "__uuid__": "3c83e437-351b-45b1-b373-4300375d40f0"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -400,7 +400,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 50
     },
     "_size": {
       "__type__": "cc.Size",
@@ -421,7 +421,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 50
     },
     "_size": {
       "__type__": "cc.Size",
@@ -449,12 +449,12 @@
     "jumpTime": 2,
     "gameOverIcon": null,
     "animationName": [
-      "running",
-      "jump"
+      "walk",
+      "idle"
     ],
     "maxSpeed": 500,
-    "acceleration": 700,
-    "jumpSpeed": 200,
+    "acceleration": 400,
+    "jumpSpeed": 400,
     "drag": 600,
     "_id": "94Fs6oMNJMf6LeH4KDzTAx"
   },
@@ -1305,7 +1305,7 @@
       "__id__": 23
     },
     "_enabled": true,
-    "_type": 2,
+    "_type": 0,
     "_allowSleep": true,
     "_gravityScale": 1,
     "_linearDamping": 0,
@@ -2138,7 +2138,7 @@
       "__id__": 47
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 2,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,

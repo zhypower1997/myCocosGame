@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "606fb8f1-1d41-491d-bb32-e313a4265712",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 206,
+  "height": 323,
+  "platformSettings": {},
+  "subMetas": {
+    "redHair": {
+      "ver": "1.0.4",
+      "uuid": "9e2e0004-d846-4766-b5ff-ad14e6bdb870",
+      "rawTextureUuid": "606fb8f1-1d41-491d-bb32-e313a4265712",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -15,
+      "trimX": 0,
+      "trimY": 30,
+      "width": 206,
+      "height": 293,
+      "rawWidth": 206,
+      "rawHeight": 323,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
