@@ -1,10 +1,3 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -44,11 +37,15 @@ cc.Class({
     isGameOver: false,
     jumpPressed: false,
 
-
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
+        cc.director.getCollisionManager().enabled = true;
         cc.director.getPhysicsManager().enabled = true;
+        // // 物理系统调试
+        // cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
+        //     cc.PhysicsManager.DrawBits.e_pairBit |
+        //     cc.PhysicsManager.DrawBits.e_centerOfMassBit |
+        //     cc.PhysicsManager.DrawBits.e_jointBit |
+        //     cc.PhysicsManager.DrawBits.e_shapeBit;
         var spine = this.spine = this.getComponent('sp.Skeleton');
         this._setMix('idle', 'walk');
         // 初始化键盘输入监听
@@ -77,8 +74,8 @@ cc.Class({
         if (event.keyCode == cc.macro.KEY.w) {
             if (!this.jumpPressed) {
                 this.jump = true;
+                this.idle();
             }
-
             this.jumpPressed = true;
         }
     },
@@ -92,12 +89,14 @@ cc.Class({
         // W
         if (event.keyCode == cc.macro.KEY.w) {
             this.jumpPressed = false;
+            if (this.walkStatus) {
+                this.walk();
+            }
         }
     },
 
     start() {
-        cc.director.getCollisionManager().enabled = true;
-        cc.director.getPhysicsManager().enabled = true;
+
     },
     walk() {
         this.spine.setAnimation(0, 'walk', true);
@@ -114,20 +113,18 @@ cc.Class({
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     },
-    onCollisionStay: function (other, self) {
-        if (other.node.name == 'platform') {
-            this.isPlatform = true;
-        }
-        if (other.node.name == 'gameOver') {
-            this.isGameOver = true;
-        }
-    },
-    onCollisionExit: function (other, self) {
-        if (other.node.name == 'platform') {
-            this.isPlatform = false;
+
+    // 只在两个碰撞体开始接触时被调用一次
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+        if(this.walkStatus){
+            this.walk();
         }
     },
 
+    // 只在两个碰撞体结束接触时被调用一次
+    onEndContact: function (contact, selfCollider, otherCollider) {
+        this.idle();
+    },
     update(dt) {
         if (this.isGameOver) {
             this.gameOverIcon.active = true;
@@ -144,7 +141,6 @@ cc.Class({
                 this.jumpPressed = true;
             }else{
                 this.jumpPressed = false;
-
             }
         }
 
@@ -200,7 +196,7 @@ cc.Class({
                 speed.x = this.maxSpeed;
             }
         }
-        if(!this.walkStatus){
+        if (!this.walkStatus) {
             if (speed.x != 0) {
                 var d = this.drag * dt;
                 if (Math.abs(speed.x) <= d) {
