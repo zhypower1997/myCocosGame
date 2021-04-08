@@ -9,33 +9,34 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        sceneName: cc.String
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        cc.director.getCollisionManager().enabled = true;
+        cc.director.getPhysicsManager().enabled = true;
+    },
 
     start() {
 
     },
 
+    // 只在两个碰撞体开始接触时被调用一次
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 1) {
+            this.go2Dialog(this.sceneName);
+        }
+    },
+
+
     go2Level1() {
         cc.director.loadScene("level1");
+    },
+
+    go2Dialog(str) {
+        cc.director.loadScene(str);
     }
 
     // update (dt) {},

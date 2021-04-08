@@ -116,6 +116,10 @@ cc.Class({
 
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact: function (contact, selfCollider, otherCollider) {
+        if(otherCollider.getComponent(cc.PhysicsCollider).tag == 5){
+            this.isGameOver = true;
+        }
+
         if(this.walkStatus){
             this.walk();
         }
@@ -127,6 +131,7 @@ cc.Class({
     },
     update(dt) {
         if (this.isGameOver) {
+            console.log('gameOver',this.gameOverIcon)
             this.gameOverIcon.active = true;
             return;
         }

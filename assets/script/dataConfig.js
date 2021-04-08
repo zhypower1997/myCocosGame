@@ -1,3 +1,9 @@
+// tag 0 默认
+// tag 1 主角色
+// tag 2 npc
+// tag 3 地面
+// tag 4 传送
+// tag 5 gameOver
 export const goblinDialogs = [{
     role: 1,
     content: '我好饿啊'

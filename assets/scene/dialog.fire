@@ -1284,7 +1284,7 @@
       "__id__": 23
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 2,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -1330,7 +1330,7 @@
       "__id__": 23
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 2,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,
@@ -2138,7 +2138,7 @@
       "__id__": 47
     },
     "_enabled": true,
-    "tag": 2,
+    "tag": 3,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,

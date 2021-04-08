@@ -118,7 +118,7 @@ cc.Class({
 
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact: function (contact, selfCollider, otherCollider) {
-        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 2) {
+        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 3) {
             if (this.walkStatus) {
                 this.walk();
             }
@@ -127,7 +127,7 @@ cc.Class({
 
     // 只在两个碰撞体结束接触时被调用一次
     onEndContact: function (contact, selfCollider, otherCollider) {
-        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 2) {
+        if (otherCollider.getComponent(cc.PhysicsCollider).tag == 3) {
             this.idle();
         }
     },
