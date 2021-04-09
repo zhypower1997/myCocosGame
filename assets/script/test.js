@@ -13,6 +13,11 @@ cc.Class({
             default: null,
             type: cc.Node
 
+        },
+        yindaoceng: {
+            default: null,
+            type: cc.Node
+
         }
     },
 
@@ -31,6 +36,14 @@ cc.Class({
     },
 
     onScroll(e) {
+        if(this.yindaoceng !== null){
+            if(this.yindaoceng.active == true){
+                this.yindaoceng.active = false;
+            }
+            if(this.totalTime*e.getScrollOffset().y ===0){
+                this.yindaoceng.active = true;
+            }
+        }
         // 滚动距离e.getScrollOffset().y
         this._armature.animation.gotoAndStopByTime('newAnimation', this.totalTime*e.getScrollOffset().y/1000)
     }
