@@ -3,7 +3,9 @@
   "last-module-event-record-time": 1617699107372,
   "group-list": [
     "default",
-    "uiLayer"
+    "uiLayer",
+    "magnify",
+    "mirrorCamera"
   ],
   "collision-matrix": [
     [
@@ -12,6 +14,17 @@
     [
       false,
       true
+    ],
+    [
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false
     ]
   ],
   "excluded-modules": [
